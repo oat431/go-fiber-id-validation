@@ -20,6 +20,9 @@ func StartServer() {
 	hello := v1.Group("/hello")
 	hello.Get("/", controller.HelloWorld)
 
+	nid := v1.Group("/nid")
+	nid.Get("", controller.ValidateNID)
+
 	port := ":" + config.GetEnv("PORT")
 	app.Listen(port)
 }
